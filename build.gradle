@@ -1,0 +1,71 @@
+plugins {
+    id 'io.qameta.allure' version '2.5'
+    id 'ru.vyarus.quality' version '2.4.0'
+}
+
+group 'io.github.sskorol'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+configurations {
+    agent
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    agent 'org.aspectj:aspectjweaver:1.8.10'
+    compile("org.testng:testng:6.13.1",
+            'org.seleniumhq.selenium:selenium-java:3.7.1',
+            'io.github.bonigarcia:webdrivermanager:1.7.2',
+            'org.aeonbits.owner:owner-java8:1.0.9',
+            'org.projectlombok:lombok:1.16.18',
+            'one.util:streamex:0.6.6',
+            'org.jooq:joor:0.9.6',
+            'io.github.sskorol:webdriver-supplier:0.7.1',
+            'io.qameta.allure:allure-testng:2.0-BETA21',
+            'io.github.sskorol:test-data-supplier:1.4.0'
+    )
+    testCompile('org.assertj:assertj-core:3.8.0',
+            'org.mockito:mockito-core:2.12.0',
+            'org.powermock:powermock-api-mockito2:2.0.0-beta.5',
+            'org.powermock:powermock-module-testng:2.0.0-beta.5'
+    )
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '4.3.1'
+}
+
+task copyConfig(type: Copy) {
+    from 'src/test/resources/config'
+    into 'build/allure-results'
+}
+
+test.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+test {
+    useTestNG() {
+        listeners << 'io.github.sskorol.core.VideoRecordingListener'
+        listeners << 'io.github.sskorol.listeners.BeforeMethodListener'
+        suites 'src/test/resources/smoke-suite.xml'
+    }
+
+    systemProperty 'allure.results.directory', 'build/allure-results'
+    systemProperty 'allure.link.issue.pattern', 'https://github.com/sskorol/qaa-amazon/issues/{}'
+    systemProperty 'allure.link.tms.pattern', 'https://github.com/sskorol/qaa-amazon/issues/{}'
+}
+
+test.dependsOn copyConfig
+
+allure {
+    autoconfigure = true
+    version = '2.4.1'
+}

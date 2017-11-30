@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Smoke">
+	<test name="Chrome group">
+		<parameter name="browserName" value="chrome"/>
+		<parameter name="platform" value="LINUX"/>
+		<classes>
+			<class name="io.github.sskorol.testcases.GoogleTests"/>
+		</classes>
+	</test>
+</suite>

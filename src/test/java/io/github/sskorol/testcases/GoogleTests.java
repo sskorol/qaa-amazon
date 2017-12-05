@@ -8,6 +8,10 @@ import static io.github.sskorol.core.PageFactory.at;
 import static io.github.sskorol.core.PageFactory.open;
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Tests for Google search page.
+ */
+
 public class GoogleTests {
 
     @Test(description = "Should search for keyword")

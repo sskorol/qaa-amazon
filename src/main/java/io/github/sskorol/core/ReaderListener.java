@@ -1,7 +1,6 @@
 package io.github.sskorol.core;
 
 import io.github.sskorol.data.DataReader;
-import lombok.extern.slf4j.Slf4j;
 import one.util.streamex.StreamEx;
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
@@ -14,10 +13,9 @@ import static java.lang.ClassLoader.getSystemClassLoader;
 import static org.apache.commons.io.FilenameUtils.getExtension;
 
 /**
- * Listener for each suite.
+ * Listener for the implementation data reading from files.
  */
 
-@Slf4j
 public class ReaderListener implements ISuiteListener {
 
     private static final List<DataReader> READERS = new ArrayList<>();

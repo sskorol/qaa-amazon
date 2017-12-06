@@ -1,7 +1,6 @@
 package io.github.sskorol.data;
 
 import io.github.sskorol.core.DataSupplier;
-import lombok.extern.slf4j.Slf4j;
 import one.util.streamex.StreamEx;
 
 import java.lang.reflect.Method;
@@ -13,7 +12,6 @@ import static java.util.Optional.ofNullable;
  * Data suppliers' methods for tests.
  */
 
-@Slf4j
 public class DataSuppliers {
 
     @SuppressWarnings("unchecked")

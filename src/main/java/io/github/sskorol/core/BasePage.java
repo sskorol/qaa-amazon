@@ -8,13 +8,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
-import static io.github.sskorol.core.WaitCondition.allPresent;
-import static io.github.sskorol.core.WaitCondition.visible;
+import static io.github.sskorol.core.WaitCondition.*;
 import static io.github.sskorol.listeners.BaseListener.getDriverMetaData;
-import static io.github.sskorol.utils.ElementTypeUtils.elementOf;
-import static io.github.sskorol.utils.ElementTypeUtils.streamOf;
+import static io.github.sskorol.utils.ElementTypeUtils.*;
+import static io.github.sskorol.utils.RegexpUtils.getMappedElement;
 
 /**
  * Parent class for all PageObjects. Defines common actions, like clicks, selections, etc.
@@ -33,6 +33,14 @@ public abstract class BasePage implements Page {
     public Page navigateTo(final String url) {
         driver.get(url);
         return this;
+    }
+
+    protected void click(final By locator) {
+        click(locator, visible);
+    }
+
+    protected void click(final By locator, final WaitCondition condition) {
+        elementOf(waitFor(locator, "", condition)).click();
     }
 
     protected void type(final By locator, final CharSequence text, final WaitCondition condition) {
@@ -55,6 +63,38 @@ public abstract class BasePage implements Page {
         return streamOf(waitFor(locator, "", condition))
                 .map(WebElement::getText)
                 .toList();
+    }
+
+    protected void selectCategory(final String category) {
+
+        Optional.of(By.linkText(category))
+                .ifPresent(this::click);
+    }
+
+    public void selectByParameters(final By locator, final String value) {
+
+        streamOf(waitFor(locator, "", allVisible))
+                .filter(webElement -> webElement.getText().equals(value))
+                .findFirst()
+                .ifPresent(WebElement::click);
+    }
+
+    public void selectProductBy(final By locator, final String value) {
+
+        streamOf(waitFor(locator, "", allVisible))
+                .filter(webElement -> webElement.getText().contains(value))
+                .findFirst()
+                .ifPresent(WebElement::click);
+    }
+
+    public void selectColor(final By locator, final String regexp, final String value) {
+
+        getMappedElement(listOf(waitFor(locator, "", allVisible)),
+                regexp, getHTMLofAccessCodePage(), value).click();
+    }
+
+    private String getHTMLofAccessCodePage() {
+        return driver.getPageSource();
     }
 
     @SuppressWarnings("unchecked")

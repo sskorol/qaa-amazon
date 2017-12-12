@@ -24,7 +24,7 @@ public class AmazonTests {
     @Issue("35")
     @TmsLink("35")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForKeyword(final Parfume parfume) {
+    public void shouldSearchForParfume(final Parfume parfume) {
 
         open(SearchPage.class)
                 .searchFor(parfume.getName());
@@ -32,7 +32,7 @@ public class AmazonTests {
         at(ProductPage.class)
                 .selectCategoryBy(parfume.getSubCategory())
                 .selectCheckboxBy(parfume.getSize())
-                .selectProduct(parfume.getPrice())
+                .selectProduct()
                 .selectScent(parfume.getScentId());
     }
 }

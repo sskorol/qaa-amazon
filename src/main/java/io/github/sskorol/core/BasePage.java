@@ -79,12 +79,8 @@ public abstract class BasePage implements Page {
                 .ifPresent(WebElement::click);
     }
 
-    public void selectProductBy(final By locator, final String value) {
-
-        streamOf(waitFor(locator, "", allVisible))
-                .filter(webElement -> webElement.getText().contains(value))
-                .findFirst()
-                .ifPresent(WebElement::click);
+    public void selectProduct(final By locator) {
+        click(locator);
     }
 
     public void selectColor(final By locator, final String regexp, final String value) {

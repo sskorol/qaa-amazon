@@ -25,8 +25,8 @@ public class ProductPage extends BasePage {
         return this;
     }
 
-    public ProductPage selectProduct(final String condition) {
-        selectProductBy(resultProducts, condition);
+    public ProductPage selectProduct() {
+        selectProduct(resultProducts);
         return this;
     }
 

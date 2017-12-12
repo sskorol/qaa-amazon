@@ -1,5 +1,8 @@
 package io.github.sskorol.testcases;
 
+import io.github.sskorol.data.Data;
+import io.github.sskorol.data.DataSuppliers;
+import io.github.sskorol.model.Parfume;
 import io.github.sskorol.pages.ProductPage;
 import io.github.sskorol.pages.SearchPage;
 import io.qameta.allure.*;
@@ -14,19 +17,22 @@ import static io.github.sskorol.core.PageFactory.open;
 
 public class AmazonTests {
 
-    @Test(description = "Should search for keyword")
-    @Feature("Search")
+    @Data(source = "parfume.json", entity = Parfume.class)
+    @Test(dataProvider = "getObject", dataProviderClass = DataSuppliers.class)
+    @Feature("Product search")
     @Story("Implement search functionality")
     @Issue("35")
     @TmsLink("35")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForProduct() {
+    public void shouldSearchForKeyword(final Parfume parfume) {
+
         open(SearchPage.class)
-                .searchFor("Montale")
-                .selectCategoryBy("Women's Eau de Parfum");
+                .searchFor(parfume.getName());
 
         at(ProductPage.class)
-                .selectCheckboxBy("3 to 3.4 Ounces")
-                .selectProduct("120");
+                .selectCategoryBy(parfume.getSubCategory())
+                .selectCheckboxBy(parfume.getSize())
+                .selectProduct(parfume.getPrice())
+                .selectScent(parfume.getScentId());
     }
 }

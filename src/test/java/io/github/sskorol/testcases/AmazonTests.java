@@ -9,7 +9,7 @@ import static io.github.sskorol.core.PageFactory.at;
 import static io.github.sskorol.core.PageFactory.open;
 
 /**
- * Tests for Google search page.
+ * Tests for Amazon.com page.
  */
 
 public class AmazonTests {

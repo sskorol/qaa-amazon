@@ -1,18 +1,18 @@
 package io.github.sskorol.testcases;
 
+import io.github.sskorol.pages.ProductPage;
 import io.github.sskorol.pages.SearchPage;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
 import static io.github.sskorol.core.PageFactory.at;
 import static io.github.sskorol.core.PageFactory.open;
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for Google search page.
+ * Tests for Amazon.com page.
  */
 
-public class GoogleTests {
+public class AmazonTests {
 
     @Test(description = "Should search for keyword")
     @Feature("Search")
@@ -20,10 +20,13 @@ public class GoogleTests {
     @Issue("35")
     @TmsLink("35")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForKeyword() {
+    public void shouldSearchForProduct() {
         open(SearchPage.class)
-                .searchFor("Automation");
+                .searchFor("Montale")
+                .selectCategoryBy("Women's Eau de Parfum");
 
-        assertThat(at(SearchPage.class).getLinksAmount()).isGreaterThan(8);
+        at(ProductPage.class)
+                .selectCheckboxBy("3 to 3.4 Ounces")
+                .selectProduct("120");
     }
 }

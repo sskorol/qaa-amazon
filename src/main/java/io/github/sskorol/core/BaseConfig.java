@@ -16,4 +16,8 @@ public interface BaseConfig extends Config, Reloadable {
     @Key("url")
     @DefaultValue("http://localhost")
     String url();
+
+    @Key("regexpGroup")
+    @DefaultValue("1")
+    int regexpGroup();
 }

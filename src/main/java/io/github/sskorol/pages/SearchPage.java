@@ -19,12 +19,6 @@ public class SearchPage extends BasePage {
         return this;
     }
 
-    @Step("Select the following category \"{text}\".")
-    public SearchPage selectCategoryBy(final String category) {
-        selectCategory(category);
-        return this;
-    }
-
     @Override
     public String url() {
         return BASE_CONFIG.url();

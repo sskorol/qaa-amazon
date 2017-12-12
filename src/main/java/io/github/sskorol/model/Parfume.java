@@ -13,7 +13,7 @@ public class Parfume extends Product {
 
     private String subCategory;
     private String size;
-    private String scentId;
+    private String scent;
 
     public Parfume(final String name, final String category) {
         super(name, category);

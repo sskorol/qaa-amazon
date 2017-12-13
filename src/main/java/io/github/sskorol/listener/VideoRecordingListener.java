@@ -1,4 +1,4 @@
-package io.github.sskorol.core;
+package io.github.sskorol.listener;
 
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;

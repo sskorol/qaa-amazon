@@ -33,9 +33,9 @@ dependencies {
             'org.slf4j:slf4j-simple:1.7.25',
             'org.mockito:mockito-core:2.12.0',
             'org.powermock:powermock-api-mockito2:2.0.0-beta.5',
-            'org.powermock:powermock-module-testng:2.0.0-beta.5'
+            'org.powermock:powermock-module-testng:2.0.0-beta.5',
+            'org.assertj:assertj-core:3.8.0'
     )
-    testCompile('org.assertj:assertj-core:3.8.0')
 }
 
 task wrapper(type: Wrapper) {
@@ -53,8 +53,9 @@ test.doFirst {
 
 test {
     useTestNG() {
-        listeners << 'io.github.sskorol.core.VideoRecordingListener'
+        listeners << 'io.github.sskorol.listener.VideoRecordingListener'
         listeners << 'io.github.sskorol.listeners.BeforeMethodListener'
+        listeners << 'io.github.sskorol.listener.SoftAssertListener'
         listeners << 'io.github.sskorol.core.DataProviderTransformer'
         listeners << 'io.github.sskorol.core.ReaderListener'
         suites 'src/test/resources/smoke-suite.xml'

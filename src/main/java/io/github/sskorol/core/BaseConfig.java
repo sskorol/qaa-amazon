@@ -20,4 +20,8 @@ public interface BaseConfig extends Config, Reloadable {
     @Key("regexpGroup")
     @DefaultValue("1")
     int regexpGroup();
+
+    @Key("attribute")
+    @DefaultValue("value")
+    String attribute();
 }

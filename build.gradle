@@ -30,13 +30,12 @@ dependencies {
             'io.github.sskorol:webdriver-supplier:0.7.1',
             'io.qameta.allure:allure-testng:2.0-BETA21',
             'io.github.sskorol:test-data-supplier:1.4.0',
-            'org.slf4j:slf4j-simple:1.7.25'
-    )
-    testCompile('org.assertj:assertj-core:3.8.0',
+            'org.slf4j:slf4j-simple:1.7.25',
             'org.mockito:mockito-core:2.12.0',
             'org.powermock:powermock-api-mockito2:2.0.0-beta.5',
             'org.powermock:powermock-module-testng:2.0.0-beta.5'
     )
+    testCompile('org.assertj:assertj-core:3.8.0')
 }
 
 task wrapper(type: Wrapper) {

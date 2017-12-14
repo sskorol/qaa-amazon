@@ -5,6 +5,7 @@ import io.github.sskorol.data.DataSuppliers;
 import io.github.sskorol.model.Account;
 import io.github.sskorol.model.Lego;
 import io.github.sskorol.model.Parfume;
+import io.github.sskorol.model.Shoes;
 import io.github.sskorol.pages.LoginPage;
 import io.github.sskorol.pages.ProductPage;
 import io.github.sskorol.pages.SearchPage;
@@ -77,6 +78,37 @@ public class AmazonTests {
                 .buy();
 
         customAssertThat(lego)
+                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+    }
+
+    @Data(source = "shoes.json", entity = Shoes.class)
+    @Data(source = "accountAmazon.json", entity = Account.class)
+    @Test(dataProvider = "getDataCollection", dataProviderClass = DataSuppliers.class)
+    @Feature("Product search")
+    @Story("Implement search functionality")
+    @Issue("9")
+    @TmsLink("10")
+    @Severity(SeverityLevel.BLOCKER)
+    public void shouldSearchForShoes(final Shoes shoes, final Account account) {
+
+        open(LoginPage.class)
+                .login(account.getUsername(), account.getPassword());
+
+        customAssertThat(account)
+                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+
+        at(SearchPage.class)
+                .searchFor(shoes.getName());
+
+        at(ProductPage.class)
+                .selectCategoryBy(shoes.getSubCategory())
+                .selectByColor(shoes.getColor())
+                .selectCheckboxBy(shoes.getSize())
+                .selectCheckboxBy(shoes.getBrand())
+                .selectProduct()
+                .buy();
+
+        customAssertThat(shoes)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 }

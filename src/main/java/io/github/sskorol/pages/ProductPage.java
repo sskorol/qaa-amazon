@@ -17,6 +17,7 @@ public class ProductPage extends BasePage {
     private final By scents = By.xpath("(//img[@id=''])");
     private final By getAllScentsButton = By.id("expanderButton_scent_name");
     private final By buyButton = By.id("buy");
+    private final By listOfSortedValue = By.xpath("//select[@id='sort']/option");
 
     public ProductPage selectByColor(final String color) {
         selectColor(colors, REGEXP_FOR_COLOR, color);
@@ -51,6 +52,12 @@ public class ProductPage extends BasePage {
     @Step("Buy the product")
     public ProductPage buy() {
         phantomClick(buyButton);
+        return this;
+    }
+
+    @Step("Sort by: \"{value}\".")
+    public ProductPage sortBy(final String value) {
+        selectByParameters(listOfSortedValue, value);
         return this;
     }
 

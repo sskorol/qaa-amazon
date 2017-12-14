@@ -1,7 +1,7 @@
 package io.github.sskorol.model;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Data;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

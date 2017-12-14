@@ -23,11 +23,13 @@ public class ProductPage extends BasePage {
         return this;
     }
 
+    @Step("Select the following checkbox \"{condition}\".")
     public ProductPage selectCheckboxBy(final String condition) {
         selectByParameters(checkboxes, condition);
         return this;
     }
 
+    @Step("Select the product")
     public ProductPage selectProduct() {
         selectProduct(resultProducts);
         return this;
@@ -46,6 +48,7 @@ public class ProductPage extends BasePage {
         return this;
     }
 
+    @Step("Buy the product")
     public ProductPage buy() {
         phantomClick(buyButton);
         return this;

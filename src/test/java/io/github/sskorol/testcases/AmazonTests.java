@@ -138,4 +138,35 @@ public class AmazonTests {
         customAssertThat(show)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
+
+    @Data(source = "playstation.json", entity = Playstation.class)
+    @Data(source = "accountAmazon.json", entity = Account.class)
+    @Test(dataProvider = "getDataCollection",
+            dataProviderClass = DataSuppliers.class,
+            description = "Should Search For Playstation")
+    @Feature("Product search")
+    @Story("Implement search functionality")
+    @Issue("9")
+    @TmsLink("11")
+    @Severity(SeverityLevel.BLOCKER)
+    public void shouldSearchForPlaystation(final Playstation playstation, final Account account) {
+
+        open(LoginPage.class)
+                .login(account.getUsername(), account.getPassword());
+
+        customAssertThat(account)
+                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+
+        at(SearchPage.class)
+                .searchFor(playstation.getName());
+
+        at(ProductPage.class)
+                .selectCategoryBy(playstation.getSubCategory())
+                .sortBy(playstation.getPriceLowToHigh())
+                .selectProduct()
+                .buy();
+
+        customAssertThat(playstation)
+                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+    }
 }

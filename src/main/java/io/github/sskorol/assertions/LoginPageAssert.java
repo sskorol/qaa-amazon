@@ -17,7 +17,7 @@ public class LoginPageAssert extends AbstractAssert<LoginPageAssert, Account> {
         super(account, LoginPageAssert.class);
     }
 
-    @Step("Verify the \"{loginStatus}\".")
+    @Step("Verify that the login status is equal to \"{loginStatus}\".")
     public LoginPageAssert hasLoginStatus(final String loginStatus) {
         isNotNull();
 

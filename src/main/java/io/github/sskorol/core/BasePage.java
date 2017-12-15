@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-import static io.github.sskorol.core.BaseConfig.BASE_CONFIG;
 import static io.github.sskorol.core.WaitCondition.*;
 import static io.github.sskorol.listeners.BaseListener.getDriverMetaData;
 import static io.github.sskorol.utils.ElementTypeUtils.*;
@@ -102,10 +101,10 @@ public abstract class BasePage implements Page {
                 .ifPresent(WebElement::click);
     }
 
-    protected void selectByAttribute(final By locator, final String value) {
+    protected void selectByAttribute(final By locator, final String value, final String attribute) {
 
         streamOf(waitFor(locator, "", allVisible))
-                .filter(webElement -> webElement.getAttribute(BASE_CONFIG.attribute()).equals(value))
+                .filter(webElement -> webElement.getAttribute(attribute).equals(value))
                 .findFirst()
                 .ifPresent(WebElement::click);
     }

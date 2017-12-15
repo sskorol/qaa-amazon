@@ -19,4 +19,9 @@ public class AttachmentUtils {
     public static String attachLog(final String name, final String data) {
         return data;
     }
+
+    @Attachment(value = "{name}", type = "image/png")
+    public static byte[] attachScreenshot(final byte[] bytes, final String name) {
+        return bytes;
+    }
 }

@@ -13,7 +13,7 @@ public class ProductPage extends BasePage {
     private static final String PURCHASE_STATUS = "Operation was successfully completed";
     private static final String ATTR_OF_SCENTS_LIST = "alt";
     private final By checkboxes = By.xpath("//li/span/span/div/label/span/span");
-    private final By sizeBlock = By.xpath("//li/span/a/div");
+    private final By sizeBlock = By.cssSelector(".buttonsprite.s-ref-text-link");
     private final By resultProducts = By.xpath("//ul[@id='s-results-list-atf']/li");
     private final By colors = By.cssSelector(".colorsprite");
     private final By scents = By.xpath("(//img[@id=''])");
@@ -41,7 +41,7 @@ public class ProductPage extends BasePage {
 
     @Step("Select the product")
     public ProductPage selectProduct() {
-        selectProduct(resultProducts);
+        click(resultProducts);
         return this;
     }
 

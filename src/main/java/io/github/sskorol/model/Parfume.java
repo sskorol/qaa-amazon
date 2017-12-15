@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 /**
  * A simple model class for processing Parfume object.
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Parfume extends Product {

@@ -12,7 +12,6 @@ import static org.testng.ITestResult.FAILURE;
 /**
  * Class for the implementation screenshot processing.
  */
-
 public class ScreenShot implements ScreenshotConsumer {
 
     @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT")

@@ -9,7 +9,7 @@ import javax.annotation.CheckReturnValue;
 import static io.github.sskorol.utils.AttachmentUtils.attachUri;
 
 /**
- * Video recording listeners, which allows .mp4 attachments for each test case.
+ * Video recording listener, which allows .mp4 attachments for each test case.
  */
 public class VideoRecordingListener implements IInvokedMethodListener {
 

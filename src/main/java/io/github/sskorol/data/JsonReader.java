@@ -14,7 +14,6 @@ import static java.lang.ClassLoader.getSystemResource;
 /**
  * Class for reading data from json files.
  */
-
 public class JsonReader implements DataReader {
 
     @SuppressWarnings("unchecked")

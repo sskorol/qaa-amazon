@@ -16,7 +16,6 @@ import static io.github.sskorol.core.PageFactory.open;
 /**
  * Tests for Amazon.com page.
  */
-
 public class AmazonTests {
 
     @Data(source = "parfume.json", entity = Parfume.class)

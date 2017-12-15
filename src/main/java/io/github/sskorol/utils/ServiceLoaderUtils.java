@@ -10,7 +10,6 @@ import java.util.ServiceLoader;
 /**
  * Service loader for service provider interface.
  */
-
 public final class ServiceLoaderUtils {
 
     private ServiceLoaderUtils() {

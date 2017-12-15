@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 /**
  * A simple model class for processing Tv Show object.
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class TvShow extends Product {

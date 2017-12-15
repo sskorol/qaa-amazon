@@ -15,7 +15,6 @@ import static io.github.sskorol.core.BaseConfig.BASE_CONFIG;
 /**
  * A utility class for different mapping the regexp value to origin value.
  */
-
 @SuppressWarnings({"HideUtilityClassConstructor", "PMD.UseUtilityClass"})
 @UtilityClass
 public final class RegexpUtils {

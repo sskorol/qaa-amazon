@@ -8,7 +8,6 @@ import org.assertj.core.util.Objects;
 /**
  * A simple model class for Product Page assert processing.
  */
-
 public class ProductPageAssert extends AbstractAssert<ProductPageAssert, Product> {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "\nExpecting <%s> of: \n<%s>\nto be: <%s>\nbut was: <%s>\n";

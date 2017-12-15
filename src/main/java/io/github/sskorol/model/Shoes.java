@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 /**
  * A simple model class for processing Shoes object.
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Shoes extends Product {

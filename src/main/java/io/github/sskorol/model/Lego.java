@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 /**
  * A simple model class for Lego processing.
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Lego extends Product {

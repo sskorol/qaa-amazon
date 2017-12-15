@@ -12,7 +12,6 @@ import static java.util.Optional.ofNullable;
 /**
  * Data suppliers' methods for tests.
  */
-
 public class DataSuppliers {
 
     @SuppressWarnings("unchecked")

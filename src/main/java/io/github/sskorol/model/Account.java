@@ -5,7 +5,6 @@ import lombok.Data;
 /**
  * A simple model class for processing Account object.
  */
-
 @Data
 public class Account {
 

@@ -4,14 +4,13 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-import static io.github.sskorol.core.WaitCondition.*;
+import static io.github.sskorol.core.WaitCondition.allVisible;
+import static io.github.sskorol.core.WaitCondition.visible;
 import static io.github.sskorol.listeners.BaseListener.getDriverMetaData;
 import static io.github.sskorol.utils.ElementTypeUtils.*;
 import static io.github.sskorol.utils.RegexpUtils.getMappedElement;
@@ -35,7 +34,7 @@ public abstract class BasePage implements Page {
         this.mockElement = mock(WebElement.class);
     }
 
-    @Step("Navigate to {url}")
+    @Step("Navigate to \"{url}\"")
     public Page navigateTo(final String url) {
         driver.get(url);
         return this;
@@ -58,27 +57,9 @@ public abstract class BasePage implements Page {
         elementOf(waitFor(locator, "", condition)).sendKeys(text);
     }
 
-    protected void type(final By locator, final CharSequence text) {
-        type(locator, text, visible);
-    }
-
     protected void phantomType(final By locator, final CharSequence text) {
         when(mockDriver.findElement(locator)).thenReturn(mockElement);
         mockDriver.findElement(locator).sendKeys(text);
-    }
-
-    protected void select(final By locator, final String text) {
-        new Select(waitFor(locator, "", visible)).selectByVisibleText(text);
-    }
-
-    protected List<String> getTextNodes(final By locator) {
-        return getTextNodes(locator, allPresent);
-    }
-
-    protected List<String> getTextNodes(final By locator, final WaitCondition condition) {
-        return streamOf(waitFor(locator, "", condition))
-                .map(WebElement::getText)
-                .toList();
     }
 
     protected String getPhantomText(final By locator, final String value) {
@@ -88,13 +69,11 @@ public abstract class BasePage implements Page {
     }
 
     protected void selectCategory(final String category) {
-
         Optional.of(By.linkText(category))
                 .ifPresent(this::click);
     }
 
     protected void selectByParameters(final By locator, final String value) {
-
         streamOf(waitFor(locator, "", allVisible))
                 .filter(webElement -> webElement.getText().equals(value))
                 .findFirst()
@@ -102,19 +81,13 @@ public abstract class BasePage implements Page {
     }
 
     protected void selectByAttribute(final By locator, final String value, final String attribute) {
-
         streamOf(waitFor(locator, "", allVisible))
                 .filter(webElement -> webElement.getAttribute(attribute).equals(value))
                 .findFirst()
                 .ifPresent(WebElement::click);
     }
 
-    protected void selectProduct(final By locator) {
-        click(locator);
-    }
-
     protected void selectColor(final By locator, final String regexp, final String value) {
-
         getMappedElement(listOf(waitFor(locator, "", allVisible)),
                 regexp, getHTMLofAccessCodePage(), value).click();
     }

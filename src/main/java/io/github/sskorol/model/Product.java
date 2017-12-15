@@ -5,7 +5,6 @@ import lombok.Getter;
 /**
  * A simple base class for processing common methods for all children classes.
  */
-
 @Getter
 public abstract class Product {
 

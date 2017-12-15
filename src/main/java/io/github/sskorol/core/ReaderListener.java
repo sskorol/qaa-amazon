@@ -15,7 +15,6 @@ import static org.apache.commons.io.FilenameUtils.getExtension;
 /**
  * Listener for the implementation data reading from files.
  */
-
 public class ReaderListener implements ISuiteListener {
 
     private static final List<DataReader> READERS = new ArrayList<>();

@@ -6,7 +6,6 @@ import io.github.sskorol.model.Product;
 /**
  * A simple base class for Custom Assertions.
  */
-
 public final class CustomAssertions {
 
     private CustomAssertions() {

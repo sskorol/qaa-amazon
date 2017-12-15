@@ -8,7 +8,6 @@ import org.assertj.core.util.Objects;
 /**
  * A simple model class for Login Page assert processing.
  */
-
 public class LoginPageAssert extends AbstractAssert<LoginPageAssert, Account> {
 
     private static final String ERROR_MESSAGE_TEMPLATE = "\nExpecting <%s> of: \n<%s>\nto be: <%s>\nbut was: <%s>\n";

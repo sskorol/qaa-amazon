@@ -1,8 +1,9 @@
 package io.github.sskorol.utils;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import lombok.experimental.UtilityClass;
+
+import static io.qameta.allure.Allure.addAttachment;
 
 /**
  * Attachments processing class. Use it along with Allure annotations.
@@ -12,7 +13,7 @@ import lombok.experimental.UtilityClass;
 public class AttachmentUtils {
 
     public static void attachUri(final String name, final String data) {
-        Allure.addAttachment(name, "text/uri-list", data);
+        addAttachment(name, "text/uri-list", data);
     }
 
     @Attachment(value = "{name}", type = "text/plain")

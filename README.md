@@ -50,8 +50,7 @@ The project uses *TestNG*  testing framework and *Allure* test report framework 
 ### 1.2. To run tests by multi-container Docker use a Docker Compose YAML file to configure your application's services:
 *For Windows* use next docker compose YAML file configuration:
 
-yaml
-```
+```yaml
 version: '3'
 services:
   selenoid:
@@ -79,8 +78,7 @@ services:
 
 *For Mac and Linux* use next docker compose YAML file configuration:
 
-yaml
-```
+```yaml
 version: '3'
 services:
   selenoid:

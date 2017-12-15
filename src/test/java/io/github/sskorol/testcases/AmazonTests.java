@@ -105,7 +105,7 @@ public class AmazonTests {
         at(ProductPage.class)
                 .selectCategoryBy(shoes.getSubCategory())
                 .selectByColor(shoes.getColor())
-                .selectCheckboxBy(shoes.getSize())
+                .selectBlockBy(shoes.getSize())
                 .selectCheckboxBy(shoes.getBrand())
                 .selectProduct()
                 .buy();

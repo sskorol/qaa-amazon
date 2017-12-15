@@ -17,7 +17,7 @@ public class ProductPageAssert extends AbstractAssert<ProductPageAssert, Product
         super(product, ProductPageAssert.class);
     }
 
-    @Step("Verify the \"{purchaseStatus}\".")
+    @Step("Verify that the purchase status is equal to \"{purchaseStatus}\".")
     public ProductPageAssert hasPurchaseStatus(final String purchaseStatus) {
         isNotNull();
 

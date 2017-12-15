@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import static io.github.sskorol.assertions.CustomAssertions.customAssertThat;
 import static io.github.sskorol.core.PageFactory.at;
 import static io.github.sskorol.core.PageFactory.open;
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests for Amazon.com page.
@@ -22,18 +21,21 @@ public class AmazonTests {
 
     @Data(source = "parfume.json", entity = Parfume.class)
     @Data(source = "accountAmazon.json", entity = Account.class)
-    @Test(dataProvider = "getDataCollection", dataProviderClass = DataSuppliers.class)
+    @Test(dataProvider = "getDataCollection",
+            dataProviderClass = DataSuppliers.class,
+            description = "Should Search For Parfume")
     @Feature("Product search")
     @Story("Implement search functionality")
-    @Issue("35")
-    @TmsLink("35")
+    @Issue("9")
+    @TmsLink("14")
     @Severity(SeverityLevel.BLOCKER)
     public void shouldSearchForParfume(final Parfume parfume, final Account account) {
 
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        assertThat(at(LoginPage.class).getLoginStatus()).isEqualTo("Authorized successfully");
+        customAssertThat(account)
+                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
 
         at(SearchPage.class)
                 .searchFor(parfume.getName());
@@ -45,7 +47,8 @@ public class AmazonTests {
                 .selectScent(parfume.getScent())
                 .buy();
 
-        assertThat(at(ProductPage.class).getPurchaseStatus()).isEqualTo("Operation was successfully completed");
+        customAssertThat(parfume)
+                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 
     @Data(source = "lego.json", entity = Lego.class)
@@ -80,7 +83,9 @@ public class AmazonTests {
 
     @Data(source = "shoes.json", entity = Shoes.class)
     @Data(source = "accountAmazon.json", entity = Account.class)
-    @Test(dataProvider = "getDataCollection", dataProviderClass = DataSuppliers.class)
+    @Test(dataProvider = "getDataCollection",
+            dataProviderClass = DataSuppliers.class,
+            description = "Should Search For Shoes")
     @Feature("Product search")
     @Story("Implement search functionality")
     @Issue("9")
@@ -100,7 +105,7 @@ public class AmazonTests {
         at(ProductPage.class)
                 .selectCategoryBy(shoes.getSubCategory())
                 .selectByColor(shoes.getColor())
-                .selectCheckboxBy(shoes.getSize())
+                .selectBlockBy(shoes.getSize())
                 .selectCheckboxBy(shoes.getBrand())
                 .selectProduct()
                 .buy();
@@ -111,7 +116,9 @@ public class AmazonTests {
 
     @Data(source = "tvshow.json", entity = TvShow.class)
     @Data(source = "accountAmazon.json", entity = Account.class)
-    @Test(dataProvider = "getDataCollection", dataProviderClass = DataSuppliers.class)
+    @Test(dataProvider = "getDataCollection",
+            dataProviderClass = DataSuppliers.class,
+            description = "Should Search For Tv Show")
     @Feature("Product search")
     @Story("Implement search functionality")
     @Issue("9")

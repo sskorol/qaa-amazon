@@ -21,20 +21,21 @@ repositories {
 dependencies {
     agent 'org.aspectj:aspectjweaver:1.8.10'
     compile("org.testng:testng:6.13.1",
-            'org.seleniumhq.selenium:selenium-java:3.7.1',
+            'org.seleniumhq.selenium:selenium-java:3.8.1',
             'io.github.bonigarcia:webdrivermanager:1.7.2',
             'org.aeonbits.owner:owner-java8:1.0.9',
             'org.projectlombok:lombok:1.16.18',
             'one.util:streamex:0.6.6',
             'org.jooq:joor:0.9.6',
-            'io.github.sskorol:webdriver-supplier:0.7.1',
+            'io.github.sskorol:webdriver-supplier:0.8.0',
             'io.qameta.allure:allure-testng:2.0-BETA21',
             'io.github.sskorol:test-data-supplier:1.4.0',
             'org.slf4j:slf4j-simple:1.7.25',
             'org.mockito:mockito-core:2.12.0',
             'org.powermock:powermock-api-mockito2:2.0.0-beta.5',
             'org.powermock:powermock-module-testng:2.0.0-beta.5',
-            'org.assertj:assertj-core:3.8.0'
+            'org.assertj:assertj-core:3.8.0',
+            'com.google.code.findbugs:findbugs:3.0.1'
     )
 }
 

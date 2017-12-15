@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     private final By signInButton = By.id("sign_in");
     private final By loginStatusButton = By.name("login_status");
 
-    @Step("Login with: username \"{userName}\", password \"{password}\"")
+    @Step("Login with: username -> \"{userName}\", password -> \"{password}\"")
     public void login(final String userName, final String password) {
         phantomType(usernameInput, userName);
         phantomType(passwordInput, password);

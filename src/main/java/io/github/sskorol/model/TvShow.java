@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * A simple model class for processing Shoes object.
+ * A simple model class for processing Tv Show object.
  */
 
 @Data

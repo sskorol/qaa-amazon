@@ -114,9 +114,22 @@ For Allure report generation use:
 For find Allure report on Web use:
 `allureServe` gradle task.
 
+## 3. Allure
+To see report you could use gradle task: `allureServe` or open `build/reports/allure-report/index.html`
+
+**Allure report structure:**
+
+1. Entry point for every report would be the 'Overview' page with dashboards and widgets
+2. Categories tab gives you the way to create custom defects classification to apply for test results.
+3. On the Suites tab a standard structural representation of executed tests, grouped by suites and classes can be found.
+4. Graphs allow you to see different statistics collected from the test data: statuses breakdown or severity and duration diagrams.
+5. Timeline tab visualizes retrospective of tests execution, allure adaptors collect precise timings of tests, and here on this tab they are arranged accordingly to their sequential or parallel timing structure.
+6. For Behavior-driven approach, this tab groups test results according to Epic, Feature and Story tags.
+7. Packages tab represents a tree-like layout of test results, grouped by different packages.
+8. From some of the results overview pages described above you can go to the test case page after clicking on the individual tests. This page will typically contain a lot of individual data related to the test case: steps executed during the test, timings, attachments, test categorization labels, descriptions and links.
 
 
-## 3. Authors
+## 4. Authors
 
 * **Sergey Korol** - *Mentor* - [Sergey Korol](https://github.com/sskorol)
 * **Maksim Gerasimenko**  - [Maksim Gerasimenko](https://github.com/mkgerasimenko)

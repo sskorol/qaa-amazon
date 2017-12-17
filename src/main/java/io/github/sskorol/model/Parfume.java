@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 public class Parfume extends Product {
 
     private String subCategory;
-    private String sortedValue;
+    private String sortValue;
     private String size;
     private String scent;
 

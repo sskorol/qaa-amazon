@@ -42,6 +42,7 @@ public class AmazonTests {
         at(ProductPage.class)
                 .selectCategoryBy(parfume.getSubCategory())
                 .selectCheckboxBy(parfume.getSize())
+                .sortBy(parfume.getSortValue())
                 .selectProduct()
                 .selectScent(parfume.getScent())
                 .buy();

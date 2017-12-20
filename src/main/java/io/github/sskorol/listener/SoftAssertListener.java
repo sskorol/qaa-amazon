@@ -10,6 +10,7 @@ import static org.testng.ITestResult.SUCCESS;
 
 @SuppressWarnings("JavadocType")
 public class SoftAssertListener implements IInvokedMethodListener {
+
     private static final ThreadLocal<SoftAssertions> THREAD_LOCAL_CONTAINER_FOR_SOFT_ASSERTIONS = new ThreadLocal<>();
 
     @Override
@@ -21,7 +22,7 @@ public class SoftAssertListener implements IInvokedMethodListener {
 
     @Override
     public void afterInvocation(final IInvokedMethod method, final ITestResult testResult) {
-        if (method.getTestMethod().isTest() && testResult.getStatus() == SUCCESS) {
+        if (method.isTestMethod() && testResult.getStatus() == SUCCESS) {
             try {
                 getSoftAssert().assertAll();
             } catch (AssertionError e) {

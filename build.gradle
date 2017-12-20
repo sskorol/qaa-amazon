@@ -1,6 +1,7 @@
 plugins {
     id 'io.qameta.allure' version '2.5'
     id 'ru.vyarus.quality' version '2.4.0'
+    id 'com.github.ben-manes.versions' version '0.17.0'
 }
 
 group 'io.github.sskorol'
@@ -18,24 +19,44 @@ repositories {
     jcenter()
 }
 
+ext {
+    aspectjweaverVersion = '1.8.13'
+    testngVersion = '6.13.1'
+    seleniumJavaVersion = '3.8.1'
+    webdrivermanagerVersion = '2.0.1'
+    ownerVersion = '1.0.9'
+    lombokVersion = '1.16.18'
+    streamExVersion = '0.6.6'
+    joorVersion = '0.9.7'
+    webdriverSupplierVersion = '0.8.0'
+    allureTestngVersion = '2.0-BETA3'
+    testDataSupplierVersion = '1.4.0'
+    slf4SimplejVersion = '1.8.0-beta0'
+    mockitoCoreVersion = '2.13.0'
+    powermockApiMockito2Version = '2.0.0-beta.5'
+    powermockModuleTestngVersion = '2.0.0-beta.5'
+    assertjVersion = '3.8.0'
+    findbugsVersion = '3.0.1'
+}
+
 dependencies {
-    agent 'org.aspectj:aspectjweaver:1.8.10'
-    compile("org.testng:testng:6.13.1",
-            'org.seleniumhq.selenium:selenium-java:3.8.1',
-            'io.github.bonigarcia:webdrivermanager:1.7.2',
-            'org.aeonbits.owner:owner-java8:1.0.9',
-            'org.projectlombok:lombok:1.16.18',
-            'one.util:streamex:0.6.6',
-            'org.jooq:joor:0.9.6',
-            'io.github.sskorol:webdriver-supplier:0.8.0',
-            'io.qameta.allure:allure-testng:2.0-BETA21',
-            'io.github.sskorol:test-data-supplier:1.4.0',
-            'org.slf4j:slf4j-simple:1.7.25',
-            'org.mockito:mockito-core:2.12.0',
-            'org.powermock:powermock-api-mockito2:2.0.0-beta.5',
-            'org.powermock:powermock-module-testng:2.0.0-beta.5',
-            'org.assertj:assertj-core:3.8.0',
-            'com.google.code.findbugs:findbugs:3.0.1'
+    agent "org.aspectj:aspectjweaver:${aspectjweaverVersion}"
+    compile("org.testng:testng:${testngVersion}",
+            "org.seleniumhq.selenium:selenium-java:${seleniumJavaVersion}",
+            "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}",
+            "org.aeonbits.owner:owner-java8:${ownerVersion}",
+            "org.projectlombok:lombok:${lombokVersion}",
+            "one.util:streamex:${streamExVersion}",
+            "org.jooq:joor:${joorVersion}",
+            "io.github.sskorol:webdriver-supplier:${webdriverSupplierVersion}",
+            "io.qameta.allure:allure-testng:${allureTestngVersion}",
+            "io.github.sskorol:test-data-supplier:${testDataSupplierVersion}",
+            "org.slf4j:slf4j-simple:${slf4SimplejVersion}",
+            "org.mockito:mockito-core:${mockitoCoreVersion}",
+            "org.powermock:powermock-api-mockito2:${powermockApiMockito2Version}",
+            "org.powermock:powermock-module-testng:${powermockModuleTestngVersion}",
+            "org.assertj:assertj-core:${assertjVersion}",
+            "com.google.code.findbugs:findbugs:${findbugsVersion}"
     )
 }
 

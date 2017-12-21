@@ -27,7 +27,7 @@ ext {
     ownerVersion = '1.0.9'
     lombokVersion = '1.16.18'
     streamExVersion = '0.6.6'
-    joorVersion = '0.9.7'
+    joorVersion = '0.9.6'
     webdriverSupplierVersion = '0.8.0'
     allureTestngVersion = '2.0-BETA21'
     testDataSupplierVersion = '1.4.0'

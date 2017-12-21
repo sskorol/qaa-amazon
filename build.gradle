@@ -29,7 +29,7 @@ ext {
     streamExVersion = '0.6.6'
     joorVersion = '0.9.7'
     webdriverSupplierVersion = '0.8.0'
-    allureTestngVersion = '2.0-BETA3'
+    allureTestngVersion = '2.0-BETA21'
     testDataSupplierVersion = '1.4.0'
     slf4SimplejVersion = '1.8.0-beta0'
     mockitoCoreVersion = '2.13.0'

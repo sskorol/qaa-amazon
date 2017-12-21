@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 import static io.github.sskorol.assertions.CustomAssertions.customAssertThat;
 import static io.github.sskorol.core.PageFactory.at;
 import static io.github.sskorol.core.PageFactory.open;
+import static io.github.sskorol.model.LoginStatus.SUCCESS;
+import static io.github.sskorol.model.PurchaseStatus.SUCCESSFUL;
 
 /**
  * Tests for Amazon.com page.
@@ -33,7 +35,7 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(account)
+        customAssertThat(SUCCESS)
                 .hasLoginStatus(at(LoginPage.class).getLoginStatus());
 
         at(SearchPage.class)
@@ -47,7 +49,7 @@ public class AmazonTests {
                 .selectScent(parfume.getScent())
                 .buy();
 
-        customAssertThat(parfume)
+        customAssertThat(SUCCESSFUL)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 
@@ -66,7 +68,7 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(account)
+        customAssertThat(SUCCESS)
                 .hasLoginStatus(at(LoginPage.class).getLoginStatus());
 
         at(SearchPage.class)
@@ -77,7 +79,7 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(lego)
+        customAssertThat(SUCCESSFUL)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 
@@ -96,7 +98,7 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(account)
+        customAssertThat(SUCCESS)
                 .hasLoginStatus(at(LoginPage.class).getLoginStatus());
 
         at(SearchPage.class)
@@ -110,7 +112,7 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(shoes)
+        customAssertThat(SUCCESSFUL)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 
@@ -129,7 +131,7 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(account)
+        customAssertThat(SUCCESS)
                 .hasLoginStatus(at(LoginPage.class).getLoginStatus());
 
         at(SearchPage.class)
@@ -142,7 +144,7 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(show)
+        customAssertThat(SUCCESSFUL)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 
@@ -161,7 +163,7 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(account)
+        customAssertThat(SUCCESS)
                 .hasLoginStatus(at(LoginPage.class).getLoginStatus());
 
         at(SearchPage.class)
@@ -173,7 +175,7 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(playstation)
+        customAssertThat(SUCCESSFUL)
                 .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
     }
 }

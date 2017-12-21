@@ -13,7 +13,7 @@ public class Playstation extends Product {
     private String subCategory;
     private String priceLowToHigh;
 
-    public Playstation(final String name, final String generalCategory, final String purchaseStatus) {
-        super(name, generalCategory, purchaseStatus);
+    public Playstation(final String name, final String generalCategory) {
+        super(name, generalCategory);
     }
 }

@@ -10,11 +10,9 @@ public abstract class Product {
 
     private final String name;
     private final String generalCategory;
-    private final String purchaseStatus;
 
-    public Product(final String name, final String generalCategory, final String purchaseStatus) {
+    public Product(final String name, final String generalCategory) {
         this.name = name;
         this.generalCategory = generalCategory;
-        this.purchaseStatus = purchaseStatus;
     }
 }

@@ -12,14 +12,11 @@ import org.testng.annotations.Test;
 import static io.github.sskorol.assertions.CustomAssertions.customAssertThat;
 import static io.github.sskorol.core.PageFactory.at;
 import static io.github.sskorol.core.PageFactory.open;
-import static io.github.sskorol.model.LoginStatus.SUCCESS;
-import static io.github.sskorol.model.PurchaseStatus.SUCCESSFUL;
 
 /**
  * Tests for Amazon.com page.
  */
 public class AmazonTests {
-
     @Data(source = "parfume.json", entity = Parfume.class)
     @Data(source = "accountAmazon.json", entity = Account.class)
     @Test(dataProvider = "getDataCollection",
@@ -35,8 +32,8 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(SUCCESS)
-                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+        customAssertThat(at(LoginPage.class))
+                .hasLoginStatus(LoginStatus.SUCCESS.getLoginStatus());
 
         at(SearchPage.class)
                 .searchFor(parfume.getName());
@@ -49,8 +46,8 @@ public class AmazonTests {
                 .selectScent(parfume.getScent())
                 .buy();
 
-        customAssertThat(SUCCESSFUL)
-                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+        customAssertThat(at(ProductPage.class))
+                .hasPurchaseStatus(PurchaseStatus.SUCCESSFUL.getPurchaseStatus());
     }
 
     @Data(source = "lego.json", entity = Lego.class)
@@ -68,8 +65,8 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(SUCCESS)
-                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+        customAssertThat(at(LoginPage.class))
+                .hasLoginStatus(LoginStatus.SUCCESS.getLoginStatus());
 
         at(SearchPage.class)
                 .searchFor(lego.getName());
@@ -79,8 +76,8 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(SUCCESSFUL)
-                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+        customAssertThat(at(ProductPage.class))
+                .hasPurchaseStatus(PurchaseStatus.SUCCESSFUL.getPurchaseStatus());
     }
 
     @Data(source = "shoes.json", entity = Shoes.class)
@@ -98,8 +95,8 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(SUCCESS)
-                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+        customAssertThat(at(LoginPage.class))
+                .hasLoginStatus(LoginStatus.SUCCESS.getLoginStatus());
 
         at(SearchPage.class)
                 .searchFor(shoes.getName());
@@ -112,8 +109,8 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(SUCCESSFUL)
-                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+        customAssertThat(at(ProductPage.class))
+                .hasPurchaseStatus(PurchaseStatus.SUCCESSFUL.getPurchaseStatus());
     }
 
     @Data(source = "tvshow.json", entity = TvShow.class)
@@ -131,8 +128,8 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(SUCCESS)
-                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+        customAssertThat(at(LoginPage.class))
+                .hasLoginStatus(LoginStatus.SUCCESS.getLoginStatus());
 
         at(SearchPage.class)
                 .searchFor(show.getName());
@@ -144,8 +141,8 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(SUCCESSFUL)
-                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+        customAssertThat(at(ProductPage.class))
+                .hasPurchaseStatus(PurchaseStatus.SUCCESSFUL.getPurchaseStatus());
     }
 
     @Data(source = "playstation.json", entity = Playstation.class)
@@ -163,8 +160,8 @@ public class AmazonTests {
         open(LoginPage.class)
                 .login(account.getUsername(), account.getPassword());
 
-        customAssertThat(SUCCESS)
-                .hasLoginStatus(at(LoginPage.class).getLoginStatus());
+        customAssertThat(at(LoginPage.class))
+                .hasLoginStatus(LoginStatus.SUCCESS.getLoginStatus());
 
         at(SearchPage.class)
                 .searchFor(playstation.getName());
@@ -175,7 +172,7 @@ public class AmazonTests {
                 .selectProduct()
                 .buy();
 
-        customAssertThat(SUCCESSFUL)
-                .hasPurchaseStatus(at(ProductPage.class).getPurchaseStatus());
+        customAssertThat(at(ProductPage.class))
+                .hasPurchaseStatus(PurchaseStatus.SUCCESSFUL.getPurchaseStatus());
     }
 }

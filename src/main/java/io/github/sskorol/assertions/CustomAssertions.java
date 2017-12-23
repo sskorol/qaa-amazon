@@ -1,23 +1,22 @@
 package io.github.sskorol.assertions;
 
-import io.github.sskorol.model.LoginStatus;
-import io.github.sskorol.model.PurchaseStatus;
+import io.github.sskorol.pages.LoginPage;
+import io.github.sskorol.pages.ProductPage;
 
 /**
  * A simple base class for Custom Assertions.
  */
-
 public final class CustomAssertions {
 
     private CustomAssertions() {
         throw new UnsupportedOperationException("Illegal access to private constructor.");
     }
 
-    public static LoginStatusAssert customAssertThat(final LoginStatus loginStatus) {
-        return new ModelSoftAssert().assertThat(LoginStatusAssert.class, LoginStatus.class, loginStatus);
+    public static LoginAssert customAssertThat(final LoginPage loginPage) {
+        return new ModelSoftAssert().assertThat(LoginAssert.class, LoginPage.class, loginPage);
     }
 
-    public static PurchaseStatusAssert customAssertThat(final PurchaseStatus purchaseStatus) {
-        return new ModelSoftAssert().assertThat(PurchaseStatusAssert.class, PurchaseStatus.class, purchaseStatus);
+    public static PurchaseAssert customAssertThat(final ProductPage productPage) {
+        return new ModelSoftAssert().assertThat(PurchaseAssert.class, ProductPage.class, productPage);
     }
 }

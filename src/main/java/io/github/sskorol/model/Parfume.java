@@ -10,12 +10,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Parfume extends Product {
 
-    private String subCategory;
     private String sortValue;
     private String size;
     private String scent;
 
-    public Parfume(final String name, final String generalCategory) {
-        super(name, generalCategory);
+    public Parfume(final String name, final String generalCategory, final String subCategory) {
+        super(name, generalCategory, subCategory);
     }
 }

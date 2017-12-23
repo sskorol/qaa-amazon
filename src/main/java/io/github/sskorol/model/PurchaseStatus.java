@@ -14,5 +14,5 @@ public enum PurchaseStatus {
     SUCCESSFUL("Operation was successfully completed"),
     FAILED("It is impossible to complete purchase operation");
 
-    private final String status;
+    private final String purchaseStatus;
 }

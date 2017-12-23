@@ -10,10 +10,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Playstation extends Product {
 
-    private String subCategory;
     private String priceLowToHigh;
 
-    public Playstation(final String name, final String generalCategory) {
-        super(name, generalCategory);
+    public Playstation(final String name, final String generalCategory, final String subCategory) {
+        super(name, generalCategory, subCategory);
     }
 }

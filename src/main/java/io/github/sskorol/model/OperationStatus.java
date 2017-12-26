@@ -16,5 +16,5 @@ public enum OperationStatus {
     LOGIN_SUCCESSFUL("Authorized successfully"),
     LOGIN_FAILED("Cannot find an account with such credentials");
 
-    private final String operationStatus;
+    private final String name;
 }

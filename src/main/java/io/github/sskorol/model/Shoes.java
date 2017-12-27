@@ -10,12 +10,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Shoes extends Product {
 
-    private String subCategory;
     private String size;
     private String color;
     private String brand;
 
-    public Shoes(final String name, final String generalCategory, final String purchaseStatus) {
-        super(name, generalCategory, purchaseStatus);
+    public Shoes(final String name, final String generalCategory, final String subCategory) {
+        super(name, generalCategory, subCategory);
     }
 }

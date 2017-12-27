@@ -1,11 +1,14 @@
 node {
-    stage('Build') {
-        echo 'Building....'
+    stage('Checkout from GitHub') {
+        checkout scm
     }
-    stage('Test') {
-        echo 'Building....'
+    stage('Run Selenium Tests') {
+        sh '''
+            chmod +x gradlew
+            ./gradlew clean test
+        '''
     }
-    stage('Deploy') {
-        echo 'Deploying....'
+    stage('Generate report') {
+        allure includeProperties: false, jdk: 'JDK 8u152', results: [[path: 'build/allure-results']]
     }
 }

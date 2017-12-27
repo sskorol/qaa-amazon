@@ -5,6 +5,8 @@ import io.github.sskorol.core.Browser;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static java.lang.String.format;
+
 /**
  * Chrome browser configuration.
  */
@@ -27,5 +29,10 @@ public class Chrome implements Browser {
         options.setCapability("name", config.getTestName());
         options.setCapability("screenResolution", "1280x1024x24");
         return merge(config, options);
+    }
+
+    @Override
+    public String url() {
+        return format("http://%s:4444/wd/hub", System.getenv("SELENOID_1_PORT_4444_TCP_ADDR"));
     }
 }

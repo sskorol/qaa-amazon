@@ -1,42 +1,46 @@
 package io.github.sskorol.pages;
 
 import io.github.sskorol.core.BasePage;
+import io.github.sskorol.model.Category;
+import io.github.sskorol.model.SortValues;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static io.github.sskorol.core.BaseConfig.BASE_CONFIG;
+import static io.github.sskorol.core.WaitCondition.enabled;
+import static java.lang.String.format;
 
 @SuppressWarnings("JavadocType")
 public class ProductPage extends BasePage {
 
-    private static final String REGEXP_FOR_COLOR = "colorsprite.*\\n.*a-color-base.>(.*?)<";
     private static final String PURCHASE_STATUS = "Operation was successfully completed";
-    private static final String ATTR_OF_SCENTS_LIST = "alt";
-    private final By colors = By.cssSelector(".colorsprite");
-    private final By checkboxes = By.xpath("//li/span/span/div/label/span/span");
-    private final By sizeBlock = By.cssSelector(".buttonsprite");
     private final By resultProducts = By.xpath("//ul[@id='s-results-list-atf']/li");
-    private final By scents = By.xpath("(//img[@id=''])");
     private final By getAllScentsButton = By.id("expanderButton_scent_name");
     private final By buyButton = By.id("buy");
-    private final By sortByDiv = By.xpath("//form[@id='searchSortForm']/select/option");
 
-    @Step("Select the \"{color}\" color.")
-    public ProductPage selectByColor(final String color) {
-        selectColor(colors, REGEXP_FOR_COLOR, color);
-        return new ProductPage();
+    @Step("Select the category: \"{category}\" and color: \"{value}\".")
+    public ProductPage selectColor(final Category category, final String value) {
+        click(By.xpath(format("//h4[.=\"%s\"]/following::ul[position() mod 3]//span[text()=\"%s\"]/../..",
+                category.getCategory(),
+                value)));
+
+        return this;
     }
 
-    @Step("Select the \"{condition}\" checkbox.")
-    public ProductPage selectCheckboxBy(final String condition) {
-        selectByParameters(checkboxes, condition);
-        return new ProductPage();
+    @Step("Select the category: \"{category}\" and choose: \"{value}\".")
+    public ProductPage chooseTo(final Category category, final String value) {
+        click(By.xpath(format("//h4[.=\"%s\"]/following::ul[position() mod 2]//span[text()=\"%s\"]",
+                category.getCategory(),
+                value)));
+        return this;
     }
 
-    @Step("Select the \"{condition}\" size block.")
-    public ProductPage selectBlockBy(final String condition) {
-        selectByParameters(sizeBlock, condition);
-        return new ProductPage();
+    @Step("Select the category: \"{category}\" and dimension: \"{value}\".")
+    public ProductPage selectDimension(final Category category, final String value) {
+        click(By.xpath(format("//h4[.=\"%s\"]/following::ul[position() mod 3]//span[text()=\"%s\"]",
+                category.getCategory(),
+                value)));
+        return this;
     }
 
     @Step("Select the product")
@@ -45,16 +49,16 @@ public class ProductPage extends BasePage {
         return this;
     }
 
-    @Step("Select the \"{category}\" category.")
-    public ProductPage selectCategoryBy(final String category) {
-        selectCategory(category);
-        return new ProductPage();
+    @Step("Select the \"{value}\" category.")
+    public ProductPage selectCategory(final String value) {
+        click(By.linkText(value));
+        return this;
     }
 
     @Step("Select the \"{value}\" scent.")
     public ProductPage selectScent(final String value) {
         click(getAllScentsButton);
-        selectByAttribute(scents, value, ATTR_OF_SCENTS_LIST);
+        click(By.xpath(format("//*[@id='shelfSwatchSection-scent_name']//*[@alt=\"%s\"]", value)), enabled);
         return this;
     }
 
@@ -65,9 +69,9 @@ public class ProductPage extends BasePage {
     }
 
     @Step("Sort by: \"{value}\".")
-    public ProductPage sortBy(final String value) {
-        selectByParameters(sortByDiv, value);
-        return new ProductPage();
+    public ProductPage sortBy(final SortValues value) {
+        click(By.xpath(format(".//*[@id='sort']//option[text()=\"%s\"]", value.getName())));
+        return this;
     }
 
     public String getPurchaseStatus() {

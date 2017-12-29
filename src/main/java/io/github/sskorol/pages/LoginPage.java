@@ -16,10 +16,11 @@ public class LoginPage extends BasePage {
     private final By loginStatusButton = By.name("login_status");
 
     @Step("Login with username: \"{userName}\", password: \"{password}\"")
-    public void login(final String userName, final String password) {
+    public SearchPage login(final String userName, final String password) {
         phantomType(usernameInput, userName);
         phantomType(passwordInput, password);
         phantomClick(signInButton);
+        return new SearchPage();
     }
 
     public String getLoginStatus() {

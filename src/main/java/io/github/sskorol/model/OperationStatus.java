@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 /**
  * Enum for purchase and login statuses.
  */
-
 @Getter
 @RequiredArgsConstructor
 public enum OperationStatus {

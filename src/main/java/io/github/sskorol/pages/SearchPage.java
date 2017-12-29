@@ -14,9 +14,9 @@ public class SearchPage extends BasePage {
     private final By inputSearch = By.id("twotabsearchtextbox");
 
     @Step("Search for \"{text}\".")
-    public SearchPage searchFor(final String text) {
+    public ProductPage searchFor(final String text) {
         type(inputSearch, text + Keys.ENTER, enabled);
-        return this;
+        return new ProductPage();
     }
 
     @Override

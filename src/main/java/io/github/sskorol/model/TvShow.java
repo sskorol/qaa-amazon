@@ -1,5 +1,6 @@
 package io.github.sskorol.model;
 
+import io.github.sskorol.customannotation.Source;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,10 +9,10 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Source(source = "tvShow.json")
 public class TvShow extends Product {
 
     private String year;
-    private String avgCustomerReview;
 
     public TvShow(final String name, final String generalCategory, final String subCategory) {
         super(name, generalCategory, subCategory);

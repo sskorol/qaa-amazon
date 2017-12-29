@@ -2,18 +2,16 @@ package io.github.sskorol.core;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Optional;
 import java.util.function.Function;
 
-import static io.github.sskorol.core.WaitCondition.allVisible;
 import static io.github.sskorol.core.WaitCondition.visible;
 import static io.github.sskorol.listeners.BaseListener.getDriverMetaData;
-import static io.github.sskorol.utils.ElementTypeUtils.*;
-import static io.github.sskorol.utils.RegexpUtils.getMappedElement;
+import static io.github.sskorol.utils.ElementTypeUtils.elementOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -68,36 +66,9 @@ public abstract class BasePage implements Page {
         return mockDriver.findElement(locator).getText();
     }
 
-    protected void selectCategory(final String category) {
-        Optional.of(By.linkText(category))
-                .ifPresent(this::click);
-    }
-
-    protected void selectByParameters(final By locator, final String value) {
-        streamOf(waitFor(locator, "", allVisible))
-                .filter(webElement -> webElement.getText().equals(value))
-                .findFirst()
-                .ifPresent(WebElement::click);
-    }
-
-    protected void selectByAttribute(final By locator, final String value, final String attribute) {
-        streamOf(waitFor(locator, "", allVisible))
-                .filter(webElement -> webElement.getAttribute(attribute).equals(value))
-                .findFirst()
-                .ifPresent(WebElement::click);
-    }
-
-    protected void selectColor(final By locator, final String regexp, final String value) {
-        getMappedElement(listOf(waitFor(locator, "", allVisible)),
-                regexp, getHTMLofAccessCodePage(), value).click();
-    }
-
-    private String getHTMLofAccessCodePage() {
-        return driver.getPageSource();
-    }
-
     @SuppressWarnings("unchecked")
     private <T, V, R> R waitFor(final T arg1, final V arg2, final WaitCondition condition) {
-        return (R) wait.until((Function<WebDriver, ?>) condition.getType().apply(arg1, arg2));
+        return (R) wait.ignoring(StaleElementReferenceException.class)
+                .until((Function<WebDriver, ?>) condition.getType().apply(arg1, arg2));
     }
 }

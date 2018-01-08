@@ -5,10 +5,10 @@ import io.github.sskorol.model.TvShow;
 import lombok.Data;
 
 /**
- * A class for processing dates of Account and TvShow.
+ * A class for processing data of Account and TvShow.
  */
 @Data
-public class ShouldSearchForTvShow {
+public class ShouldSearchForTvShowDataSet {
 
     private final Account account;
     private final TvShow tvShow;

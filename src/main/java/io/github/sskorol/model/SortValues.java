@@ -14,7 +14,7 @@ public enum SortValues {
     PRICE_LOW_TO_HIGH("Price: Low to High"),
     PRICE_HIGH_TO_LOW("Price: High to Low"),
     DISCOUNT_LOW_TO_HIGH("Discount: Low to High"),
-    DISCOUNT("Discount: High to Low"),
+    DISCOUNT_HIGH_TO_LOW("Discount: High to Low"),
     NEWEST_ARRIVALS("Newest Arrivals"),
     AVG_CUSTOMER_REVIEW("Avg. Customer Review");
 

@@ -5,10 +5,10 @@ import io.github.sskorol.model.Playstation;
 import lombok.Data;
 
 /**
- * A class for processing dates of Account and Playstation.
+ * A class for processing data of Account and Playstation.
  */
 @Data
-public class ShouldSearchForPlaystation {
+public class ShouldSearchForPlaystationDataSet {
 
     private final Account account;
     private final Playstation playstation;

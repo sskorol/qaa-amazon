@@ -9,12 +9,10 @@ import lombok.Getter;
 public abstract class Product {
 
     private final String name;
-    private final String generalCategory;
-    private final String subCategory;
+    private final String category;
 
-    public Product(final String name, final String generalCategory, final String subCategory) {
+    public Product(final String name, final String category) {
         this.name = name;
-        this.generalCategory = generalCategory;
-        this.subCategory = subCategory;
+        this.category = category;
     }
 }

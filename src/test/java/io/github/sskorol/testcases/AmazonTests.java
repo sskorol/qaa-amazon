@@ -23,7 +23,7 @@ import static io.github.sskorol.model.SortValues.*;
 public class AmazonTests {
 
     @Data(source = "accountAmazon.json", entity = Account.class)
-    @Test(dataProvider = "getObject",
+    @Test(dataProvider = "getData",
             dataProviderClass = DataSuppliers.class,
             description = "Should Login")
     @Feature("Product search")
@@ -40,7 +40,7 @@ public class AmazonTests {
                 .hasLoginStatus(LOGIN_SUCCESSFUL);
     }
 
-    @Data(entity = ShouldSearchForParfume.class)
+    @Data(entity = ShouldSearchForParfumeDataSet.class)
     @Test(dataProvider = "getDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Parfume")
@@ -49,23 +49,21 @@ public class AmazonTests {
     @Issue("9")
     @TmsLink("14")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForParfume(final ShouldSearchForParfume data) {
+    public void shouldSearchForParfume(final ShouldSearchForParfumeDataSet data) {
 
         open(LoginPage.class)
                 .login(data.getAccount().getUsername(), data.getAccount().getPassword())
                 .searchFor(data.getParfume().getName())
-                .selectCategory(data.getParfume().getSubCategory())
-                .chooseTo(WOMEN_FRAGRANCE_SIZE, data.getParfume().getAmount())
+                .selectCategory(data.getParfume().getCategory())
                 .sortBy(PRICE_HIGH_TO_LOW)
                 .selectProduct()
-                .selectScent(data.getParfume().getScent())
                 .buy();
 
         customAssertThat(at(ProductPage.class))
                 .hasPurchaseStatus(PURCHASE_SUCCESSFUL);
     }
 
-    @Data(entity = ShouldSearchForLego.class)
+    @Data(entity = ShouldSearchForLegoDataSet.class)
     @Test(dataProvider = "getDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Lego")
@@ -74,12 +72,12 @@ public class AmazonTests {
     @Issue("9")
     @TmsLink("13")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForLego(final ShouldSearchForLego data) {
+    public void shouldSearchForLego(final ShouldSearchForLegoDataSet data) {
 
         open(LoginPage.class)
                 .login(data.getAccount().getUsername(), data.getAccount().getPassword())
                 .searchFor(data.getLego().getName())
-                .chooseTo(TOYS_AGE_RANGE, data.getLego().getAgeRange())
+                .filterBy(TOYS_AGE_RANGE, data.getLego().getAgeRange())
                 .selectProduct()
                 .buy();
 
@@ -87,7 +85,7 @@ public class AmazonTests {
                 .hasPurchaseStatus(PURCHASE_SUCCESSFUL);
     }
 
-    @Data(entity = ShouldSearchForShoes.class)
+    @Data(entity = ShouldSearchForShoesDataSet.class)
     @Test(dataProvider = "getDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Shoes")
@@ -96,15 +94,15 @@ public class AmazonTests {
     @Issue("9")
     @TmsLink("10")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForShoes(final ShouldSearchForShoes data) {
+    public void shouldSearchForShoes(final ShouldSearchForShoesDataSet data) {
 
         open(LoginPage.class)
                 .login(data.getAccount().getUsername(), data.getAccount().getPassword())
                 .searchFor(data.getShoes().getName())
-                .selectCategory(data.getShoes().getSubCategory())
-                .selectColor(COLOR, data.getShoes().getColor())
-                .selectDimension(SHOE_SIZE, data.getShoes().getSize())
-                .chooseTo(BRAND, data.getShoes().getBrand())
+                .selectCategory(data.getShoes().getCategory())
+                .filterBy(COLOR, data.getShoes().getColor())
+                .filterBy(SHOE_SIZE, data.getShoes().getSize())
+                .filterBy(BRAND, data.getShoes().getBrand())
                 .selectProduct()
                 .buy();
 
@@ -112,7 +110,7 @@ public class AmazonTests {
                 .hasPurchaseStatus(PURCHASE_SUCCESSFUL);
     }
 
-    @Data(entity = ShouldSearchForTvShow.class)
+    @Data(entity = ShouldSearchForTvShowDataSet.class)
     @Test(dataProvider = "getDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Tv Show")
@@ -121,13 +119,13 @@ public class AmazonTests {
     @Issue("9")
     @TmsLink("17")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForTvShow(final ShouldSearchForTvShow data) {
+    public void shouldSearchForTvShow(final ShouldSearchForTvShowDataSet data) {
 
         open(LoginPage.class)
                 .login(data.getAccount().getUsername(), data.getAccount().getPassword())
                 .searchFor(data.getTvShow().getName())
-                .selectCategory(data.getTvShow().getSubCategory())
-                .chooseTo(MOVIE_TV, data.getTvShow().getYear())
+                .selectCategory(data.getTvShow().getCategory())
+                .filterBy(MOVIE_TV, data.getTvShow().getYear())
                 .sortBy(AVG_CUSTOMER_REVIEW)
                 .selectProduct()
                 .buy();
@@ -136,7 +134,7 @@ public class AmazonTests {
                 .hasPurchaseStatus(PURCHASE_SUCCESSFUL);
     }
 
-    @Data(entity = ShouldSearchForPlaystation.class)
+    @Data(entity = ShouldSearchForPlaystationDataSet.class)
     @Test(dataProvider = "getDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Playstation")
@@ -145,12 +143,12 @@ public class AmazonTests {
     @Issue("9")
     @TmsLink("11")
     @Severity(SeverityLevel.BLOCKER)
-    public void shouldSearchForPlaystation(final ShouldSearchForPlaystation data) {
+    public void shouldSearchForPlaystation(final ShouldSearchForPlaystationDataSet data) {
 
         open(LoginPage.class)
                 .login(data.getAccount().getUsername(), data.getAccount().getPassword())
                 .searchFor(data.getPlaystation().getName())
-                .selectCategory(data.getPlaystation().getSubCategory())
+                .selectCategory(data.getPlaystation().getCategory())
                 .sortBy(PRICE_LOW_TO_HIGH)
                 .selectProduct()
                 .buy();

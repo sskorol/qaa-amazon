@@ -14,7 +14,7 @@ public class TvShow extends Product {
 
     private String year;
 
-    public TvShow(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public TvShow(final String name, final String category) {
+        super(name, category);
     }
 }

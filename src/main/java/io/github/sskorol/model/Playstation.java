@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @Source(source = "playstation.json")
 public class Playstation extends Product {
 
-    public Playstation(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public Playstation(final String name, final String category) {
+        super(name, category);
     }
 }

@@ -12,10 +12,7 @@ import lombok.EqualsAndHashCode;
 @Source(source = "parfume.json")
 public class Parfume extends Product {
 
-    private String amount;
-    private String scent;
-
-    public Parfume(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public Parfume(final String name, final String category) {
+        super(name, category);
     }
 }

@@ -21,5 +21,5 @@ public enum Category {
     MOVIE_TV("Movie & TV Show Release Decade"),
     TOYS_AGE_RANGE("Toys Age Range");
 
-    private final String category;
+    private final String name;
 }

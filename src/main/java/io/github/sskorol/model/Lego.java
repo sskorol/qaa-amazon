@@ -14,7 +14,7 @@ public class Lego extends Product {
 
     private String ageRange;
 
-    public Lego(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public Lego(final String name, final String category) {
+        super(name, category);
     }
 }

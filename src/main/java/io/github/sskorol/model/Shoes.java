@@ -16,7 +16,7 @@ public class Shoes extends Product {
     private String color;
     private String brand;
 
-    public Shoes(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public Shoes(final String name, final String category) {
+        super(name, category);
     }
 }

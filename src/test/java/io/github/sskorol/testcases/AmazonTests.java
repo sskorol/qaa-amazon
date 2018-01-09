@@ -34,7 +34,7 @@ public class AmazonTests {
     public void shouldLogIn(final Account account) {
 
         open(LoginPage.class)
-                .login(account.getUsername(), account.getPassword());
+                .login(account);
 
         customAssertThat(at(LoginPage.class))
                 .hasLoginStatus(LOGIN_SUCCESSFUL);
@@ -52,7 +52,7 @@ public class AmazonTests {
     public void shouldSearchForParfume(final ShouldSearchForParfumeDataSet data) {
 
         open(LoginPage.class)
-                .login(data.getAccount().getUsername(), data.getAccount().getPassword())
+                .login(data.getAccount())
                 .searchFor(data.getParfume().getName())
                 .selectCategory(data.getParfume().getCategory())
                 .sortBy(PRICE_HIGH_TO_LOW)
@@ -75,7 +75,7 @@ public class AmazonTests {
     public void shouldSearchForLego(final ShouldSearchForLegoDataSet data) {
 
         open(LoginPage.class)
-                .login(data.getAccount().getUsername(), data.getAccount().getPassword())
+                .login(data.getAccount())
                 .searchFor(data.getLego().getName())
                 .filterBy(TOYS_AGE_RANGE, data.getLego().getAgeRange())
                 .selectProduct()
@@ -97,7 +97,7 @@ public class AmazonTests {
     public void shouldSearchForShoes(final ShouldSearchForShoesDataSet data) {
 
         open(LoginPage.class)
-                .login(data.getAccount().getUsername(), data.getAccount().getPassword())
+                .login(data.getAccount())
                 .searchFor(data.getShoes().getName())
                 .selectCategory(data.getShoes().getCategory())
                 .filterBy(COLOR, data.getShoes().getColor())
@@ -122,7 +122,7 @@ public class AmazonTests {
     public void shouldSearchForTvShow(final ShouldSearchForTvShowDataSet data) {
 
         open(LoginPage.class)
-                .login(data.getAccount().getUsername(), data.getAccount().getPassword())
+                .login(data.getAccount())
                 .searchFor(data.getTvShow().getName())
                 .selectCategory(data.getTvShow().getCategory())
                 .filterBy(MOVIE_TV, data.getTvShow().getYear())
@@ -146,7 +146,7 @@ public class AmazonTests {
     public void shouldSearchForPlaystation(final ShouldSearchForPlaystationDataSet data) {
 
         open(LoginPage.class)
-                .login(data.getAccount().getUsername(), data.getAccount().getPassword())
+                .login(data.getAccount())
                 .searchFor(data.getPlaystation().getName())
                 .selectCategory(data.getPlaystation().getCategory())
                 .sortBy(PRICE_LOW_TO_HIGH)

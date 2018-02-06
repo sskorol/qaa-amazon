@@ -1,5 +1,6 @@
 package io.github.sskorol.model;
 
+import io.github.sskorol.customannotation.Source;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,11 +9,12 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Source(source = "lego.json")
 public class Lego extends Product {
 
     private String ageRange;
 
-    public Lego(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public Lego(final String name, final String category) {
+        super(name, category);
     }
 }

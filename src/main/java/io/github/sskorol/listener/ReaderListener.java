@@ -1,4 +1,4 @@
-package io.github.sskorol.core;
+package io.github.sskorol.listener;
 
 import io.github.sskorol.data.DataReader;
 import one.util.streamex.StreamEx;

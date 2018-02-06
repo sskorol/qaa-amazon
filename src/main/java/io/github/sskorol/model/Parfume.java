@@ -1,5 +1,6 @@
 package io.github.sskorol.model;
 
+import io.github.sskorol.customannotation.Source;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,13 +9,10 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Source(source = "parfume.json")
 public class Parfume extends Product {
 
-    private String sortValue;
-    private String size;
-    private String scent;
-
-    public Parfume(final String name, final String generalCategory, final String subCategory) {
-        super(name, generalCategory, subCategory);
+    public Parfume(final String name, final String category) {
+        super(name, category);
     }
 }

@@ -1,6 +1,4 @@
 {
   "name": "playstation",
-  "generalCategory": "Video Games",
-  "subCategory": "PlayStation 4 Consoles",
-  "priceLowToHigh": "Price: Low to High"
+  "category": "PlayStation 4 Consoles"
 }

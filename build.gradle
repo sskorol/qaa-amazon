@@ -78,8 +78,8 @@ test {
         listeners << 'io.github.sskorol.listener.VideoRecordingListener'
         listeners << 'io.github.sskorol.listeners.BeforeMethodListener'
         listeners << 'io.github.sskorol.listener.SoftAssertListener'
+        listeners << 'io.github.sskorol.listener.ReaderListener'
         listeners << 'io.github.sskorol.core.DataProviderTransformer'
-        listeners << 'io.github.sskorol.core.ReaderListener'
         suites 'src/test/resources/smoke-suite.xml'
     }
 

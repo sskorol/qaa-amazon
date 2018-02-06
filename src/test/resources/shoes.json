@@ -1,7 +1,6 @@
 {
   "name": "running shoes nike",
-  "generalCategory": "Men's Fashion",
-  "subCategory": "Men's Running Shoes",
+  "category": "Men's Running Shoes",
   "size": "9",
   "color": "Red",
   "brand": "NIKE"

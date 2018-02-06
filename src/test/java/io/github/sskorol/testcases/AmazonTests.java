@@ -23,7 +23,7 @@ import static io.github.sskorol.model.SortValues.*;
 public class AmazonTests {
 
     @Data(source = "accountAmazon.json", entity = Account.class)
-    @Test(dataProvider = "getData",
+    @Test(dataProvider = "getAmazonTestData",
             dataProviderClass = DataSuppliers.class,
             description = "Should Login")
     @Feature("Product search")
@@ -41,7 +41,7 @@ public class AmazonTests {
     }
 
     @Data(entity = ShouldSearchForParfumeDataSet.class)
-    @Test(dataProvider = "getDataSet",
+    @Test(dataProvider = "getAmazonTestDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Parfume")
     @Feature("Product search")
@@ -64,7 +64,7 @@ public class AmazonTests {
     }
 
     @Data(entity = ShouldSearchForLegoDataSet.class)
-    @Test(dataProvider = "getDataSet",
+    @Test(dataProvider = "getAmazonTestDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Lego")
     @Feature("Product search")
@@ -86,7 +86,7 @@ public class AmazonTests {
     }
 
     @Data(entity = ShouldSearchForShoesDataSet.class)
-    @Test(dataProvider = "getDataSet",
+    @Test(dataProvider = "getAmazonTestDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Shoes")
     @Feature("Product search")
@@ -111,7 +111,7 @@ public class AmazonTests {
     }
 
     @Data(entity = ShouldSearchForTvShowDataSet.class)
-    @Test(dataProvider = "getDataSet",
+    @Test(dataProvider = "getAmazonTestDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Tv Show")
     @Feature("Product search")
@@ -135,7 +135,7 @@ public class AmazonTests {
     }
 
     @Data(entity = ShouldSearchForPlaystationDataSet.class)
-    @Test(dataProvider = "getDataSet",
+    @Test(dataProvider = "getAmazonTestDataSet",
             dataProviderClass = DataSuppliers.class,
             description = "Should Search For Playstation")
     @Feature("Product search")

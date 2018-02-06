@@ -20,7 +20,7 @@ public class DataSuppliers {
 
     @SuppressWarnings("unchecked")
     @DataSupplier(flatMap = true)
-    public <T> StreamEx<T> getData(final Method method) {
+    public <T> StreamEx<T> getAmazonTestData(final Method method) {
         return ofNullable(method.getDeclaredAnnotation(Data.class))
                 .map(data -> StreamEx.of(readerOf(data.source())
                         .readFrom(data.source(), (Class<T>) data.entity())))
@@ -29,21 +29,21 @@ public class DataSuppliers {
 
     @SuppressWarnings("unchecked")
     @DataSupplier(transpose = true)
-    public <T> T[] getDataCollection(final Method method) {
+    public <T> T[] getAmazonTestDataCollection(final Method method) {
         return (T[]) ofNullable(method.getAnnotationsByType(Data.class))
                 .map(data -> StreamEx.of(data)
                         .flatMap(dataIn -> stream(readerOf(dataIn.source())
                                 .readFrom(dataIn.source(), (Class<T>) dataIn.entity()))).toArray())
-                .orElseThrow(() -> new NoClassDefFoundError("Data class not found"));
+                .orElseThrow(() -> new IllegalStateException("Data class not found"));
     }
 
     @SuppressWarnings("unchecked")
     @DataSupplier(flatMap = true)
-    public <T> T getDataSet(final Method method) {
+    public <T> T getAmazonTestDataSet(final Method method) {
         return ofNullable(method.getDeclaredAnnotation(Data.class))
                 .map(Data::entity)
                 .map(entity -> (T) getObject((Class<T>) entity, getSourceArgs(entity)))
-                .orElseThrow(() -> new NoClassDefFoundError("No Data class found"));
+                .orElseThrow(() -> new IllegalStateException("No Data class found"));
     }
 
     private <T> Object[] getSourceArgs(final Class<T> entity) {
